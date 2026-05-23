@@ -2,6 +2,8 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 import time
 import pandas as pd 
+import re
+
 driver= webdriver.Chrome()
 driver.get('https://www.daraz.com.bd/men-eyeglasses/')
 
@@ -24,7 +26,11 @@ image_link=[]
 link_list=[]
 
 for i in range (1, 41):
+    
+    
     text = driver.find_element(By.XPATH, '//*[@id="root"]/div/div[2]/div[1]/div/div[1]/div[2]/div['+str(i)+']/div/div/div[2]/div[2]/a').text
+    
+
     image= driver.find_element(By.XPATH, '//*[@id="root"]/div/div[2]/div[1]/div/div[1]/div[2]/div['+str(i)+']/div/div/div[1]/div/a/div/img').get_attribute('src')
     link= driver.find_element(By.XPATH, '//*[@id="root"]/div/div[2]/div[1]/div/div[1]/div[2]/div['+str(i)+']/div/div/div[2]/div[2]/a').get_attribute('href')
     text_list.append(text)
